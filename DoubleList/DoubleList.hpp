@@ -8,6 +8,7 @@ struct OutIndexException : public std::exception {
         return OutIndex;
     }
 };
+
 template<typename T>
 class DoubleList {
 private:
