@@ -6,10 +6,11 @@ public:
     ~DGraph();
     T* getNode(int pos);
     DoubleList<double>* getRelations(int pos);
+    DoubleList<DoubleList<double>>* getRelations();
     void AddNode(T &data);
     void DeleteNode(int pos);
     void fixRelationShip(int from,int to, double price);
-    const double maxValue=99999999999999999.9;
+    constexpr static const double maxValue=9999999.9;
 
 private:
     DoubleList<T>* Nodes;
@@ -69,6 +70,11 @@ void DGraph<T>::DeleteNode(int pos) {
 template<typename T>
 void DGraph<T>::fixRelationShip(int from, int to, double price) {
     *RelationMatrix->get(from)->get(to)=price;
+}
+template<typename T>
+
+DoubleList<DoubleList<double>>* DGraph<T>::getRelations(){
+    return RelationMatrix;
 }
 template<typename T>
 DGraph<T>::~DGraph(){
