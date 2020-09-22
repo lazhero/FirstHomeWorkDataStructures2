@@ -19,9 +19,11 @@ private:
     bool verification(int index);
 public:
     DoubleList();
+    DoubleList(DoubleList<T>& List);
     ~DoubleList();
     void add(T &data);
     void erase(int pos);
+    void set(int pos,T &data);
     T* get(int pos);
     int getLen();
 };
@@ -93,4 +95,18 @@ void DoubleList<T>::erase(int pos) {
     }
     free(Signaled);
     len--;
+}template<typename T>
+void DoubleList<T>::set(int pos,T &data) {
+    DoubleNode<T>* temp=getNode(pos);
+    temp->setData(data);
+
+}
+template<typename T>
+DoubleList<T>::DoubleList(DoubleList<T> &List) {
+    DoubleList<int>();
+    T *temp;
+    for (int i = 0; i < List.len; i++) {
+        temp = new T(*List.get(i));
+        add(*temp);
+    }
 }
